@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:impish
 
 ENV TERM xterm
 
@@ -48,6 +48,10 @@ ENV LANG=en_US.UTF-8 \
 COPY --chown=steam:steam containerfs ${STEAM_DIR}/
 
 USER steam
+
+# Force download to include CSGO files in image
+RUN ${STEAMCMD_DIR}/steamcmd.sh +login anonymous +force_install_dir ${CSGO_DIR} +app_update ${CSGO_APP_ID} validate +quit
+
 WORKDIR ${CSGO_DIR}
 VOLUME ${CSGO_DIR}
 ENTRYPOINT exec ${STEAM_DIR}/start.sh
