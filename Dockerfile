@@ -50,7 +50,7 @@ COPY --chown=steam:steam containerfs ${STEAM_DIR}/
 USER steam
 
 # Force download to include CSGO files in image
-RUN ${STEAMCMD_DIR}/steamcmd.sh +login anonymous +force_install_dir ${CSGO_DIR} +app_update ${CSGO_APP_ID} validate +quit
+# RUN ${STEAMCMD_DIR}/steamcmd.sh +login anonymous +force_install_dir ${CSGO_DIR} +app_update ${CSGO_APP_ID} validate +quit
 
 WORKDIR ${CSGO_DIR}
 VOLUME ${CSGO_DIR}
