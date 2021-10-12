@@ -1,4 +1,4 @@
-FROM ubuntu:impish
+FROM ubuntu:focal
 
 ENV TERM xterm
 
@@ -12,7 +12,7 @@ SHELL ["/bin/bash", "-c"]
 ARG STEAMCMD_URL=https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
 
 RUN set -xo pipefail
-RUN apt-get update 
+RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends --no-install-suggests -y \
     lib32gcc1 \
     lib32stdc++6 \
